@@ -1,0 +1,20 @@
+{
+  "folding_bed": {
+    "name": "Folding Beds"
+  },
+  "bed": {
+    "name": "Beds"
+  },
+  "mattress": {
+    "name": "Mattresses"
+  },
+  "table": {
+    "name": "Tables"
+  },
+  "accessories": {
+    "name": "Accessories"
+  },
+  "puff": {
+    "name": "Puffs"
+  }
+}

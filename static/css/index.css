@@ -1,0 +1,93 @@
+:root {
+  --blue: #4f83b0;
+  --teal: #4fb07b;
+  --red: #b04f54;
+  --black: black !important;
+  --whitesmoke: whitesmoke;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.bg-blue {
+  background-color: var(--blue) !important;
+  color: var(--whitesmoke);
+}
+
+.bg-red {
+  background-color: var(--red) !important;
+  color: var(--black);
+}
+
+.bg-teal {
+  background-color: var(--teal) !important;
+  color: var(--whitesmoke);
+}
+
+.bg-whitesmoke {
+  background-color: var(--whitesmoke) !important;
+  color: var(--black);
+}
+
+.bg-black {
+  background-color: var(--black) !important;
+  color: var(--whitesmoke);
+}
+
+.bg-inherit {
+  background-color: inherit !important;
+}
+
+.text-blue {
+  color: var(--blue) !important;
+}
+
+.text-red {
+  color: var(--red) !important;
+}
+
+.text-teal {
+  color: var(--teal) !important;
+}
+
+.text-whitesmoke {
+  color: var(--whitesmoke) !important;
+}
+
+.text-black {
+  color: var(--black) !important;
+}
+
+.text-inherit {
+  color: inherit !important;
+}
+
+.border-blue {
+  border-color: var(--blue) !important;
+}
+
+.border-red {
+  border-color: var(--red) !important;
+}
+
+.border-teal {
+  border-color: var(--teal) !important;
+}
+
+.border-whitesmoke {
+  border-color: var(--whitesmoke) !important;
+}
+
+.border-black {
+  border-color: var(--black) !important;
+}
+
+.border-inherit {
+  border-color: inherit !important;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 400;
+  margin: 0;
+}

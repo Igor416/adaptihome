@@ -1,0 +1,10 @@
+{
+  "filter": "Filter",
+  "order_by": "Order by",
+  "none": "None",
+  "a": "Name, A to Z",
+  "z": "Name, A to Z",
+  "low": "Price, low to high",
+  "high": "Price, high to low",
+  "from": "From"
+}

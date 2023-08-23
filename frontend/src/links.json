@@ -1,0 +1,86 @@
+[
+  {
+    "name": "folding_bed",
+    "image": "https://rabatabil.ro/c/3-footer_default/wall-beds.jpg",
+    "count": 0,
+    "filters": []
+  },
+  {
+    "name": "bed",
+    "image": "https://rabatabil.ro/c/3-footer_default/wall-beds.jpg",
+    "count": 26,
+    "filters": [
+      {
+        "key": "sleep_places",
+        "multiple": false,
+        "values": ["one", "two"]
+      }
+    ]
+  },
+  {
+    "name": "mattress",
+    "image": "https://rabatabil.ro/c/16-footer_default/saltele-si-accesorii.jpg",
+    "count": 48,
+    "filters": [
+      {
+        "key": "collection",
+        "multiple": true,
+        "values": ["Modern", "Exclusive", "Comfort", "Ecolatex", "Active", "Alba", "Smart", "Special", "Vegas Kids"]
+      },
+      {
+        "key": "age",
+        "multiple": false,
+        "values": ["Children", "Teenagers", "Adults"]
+      },
+      {
+        "key": "rigidity",
+        "multiple": true,
+        "values": ["firm", "semifirm", "semisoft", "non-symmetrical", "latex", "coconut_coir", "memory_effect"]
+      }
+    ]
+  },
+  {
+    "name": "table",
+    "image": "https://rabatabil.ro/c/15-footer_default/chairs-and-tables.jpg",
+    "count": 0,
+    "filters": []
+  },
+  {
+    "name": "accessories",
+    "image": "https://rabatabil.ro/c/16-footer_default/saltele-si-accesorii.jpg",
+    "count": 40,
+    "filters": [
+      {
+        "key": "category",
+        "multiple": true,
+        "values": ["pillow", "mattress_pad", "blanket", "basis"]
+      },
+      {
+        "key": "age",
+        "multiple": false,
+        "values": ["Children", "Teenagers", "Adults"]
+      },
+      {
+        "key": "pillow",
+        "multiple": false,
+        "values": ["all", "latex", "memory_foam"]
+      },
+      {
+        "key": "mattresspad",
+        "multiple": false,
+        "values": ["all", "transform", "protect"]
+      },
+      {
+        "key": "blanket",
+        "multiple": false,
+        "values": ["all", "Bamboo", "Sumwin", "Sheep", "Thermoregulation"]
+      }
+    ]
+  },
+  {
+    "name": "puff",
+    "image": "https://rabatabil.ro/c/15-footer_default/chairs-and-tables.jpg",
+    "count": 16,
+    "filters": []
+  }
+]
