@@ -54,7 +54,7 @@ class LayerMattressPadInline(admin.TabularInline):
     model = models.LayerMattressPad
     extra = 3
 
-@admin.action(description='Убрать скидку')
+@admin.action(description='Remove discount')
 def remove_discount(modeladmin, request, queryset):
     queryset.update(discount=0)
 
@@ -86,3 +86,11 @@ for product_name in ct.get_all_categories():
 
     admin_model = type(product_name + 'Admin', (admin.ModelAdmin,), attrs)
     admin.site.register(model, admin_model)
+
+class OrderedSizeInline(admin.TabularInline):
+    model = models.OrderedSize
+    extra = 1
+
+@admin.register(models.Order)
+class OrderAdmin(admin.ModelAdmin):
+    inlines = (OrderedSizeInline,)

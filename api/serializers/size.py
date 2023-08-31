@@ -1,11 +1,8 @@
-from . import models, ModelSerializer
+from . import models, ModelSerializer, IntegerField
 
 class SizeSerializer(ModelSerializer):
+  quantity = IntegerField(default=1)
+  
   class Meta:
-    exclude = ['id', 'category', 'product']
+    exclude = ['id', 'category']
     model = models.Size
-    
-  def to_representation(self, obj):
-    r = super().to_representation(obj)
-    r['quantity'] = 1
-    return r

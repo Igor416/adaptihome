@@ -8,6 +8,10 @@ class Size(models.Model):
     length = models.SmallIntegerField('Length', default=200)
     price = models.SmallIntegerField('Price (euro)', default=0)
     discount = models.SmallIntegerField('Discount (%)', default=0)
+    
+    @property
+    def quantity(self):
+        return 1
 
     def set_product_and_category(self, product, category):
         self.product = product

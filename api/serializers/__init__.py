@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, IntegerField
 from api import models
 from api import catalog
 from api.translations import langs
@@ -22,3 +22,4 @@ from .search import CategoryResultSerializer, ProductResultSerializer
 from .size import SizeSerializer
 from .mattres_collection_price import MattressColectionsPriceSerializer
 from .products_factory import ListedProductsSerializerFactory, DetailedProductSerializerFactory
+from .order import OrderSerializer

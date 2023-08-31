@@ -19,7 +19,7 @@ class ProductForm(forms.ModelForm):
 
 				elif name == 'sizes':
 					category = models.Category.objects.get(name=self.model.get_name())
-					by_category = models.Size.objects.filter(category=category, product=self.instance.name)
+					by_category = models.Size.objects.filter(category=category, product=self.instance.name, ordered=False)
 					field.queryset = by_category | models.Size.objects.filter(category=None, price__gt=0)
 
 				elif name == 'shortcut':
