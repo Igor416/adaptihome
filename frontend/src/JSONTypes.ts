@@ -21,9 +21,7 @@ export interface Size {
 }
 
 export interface MattressColectionPrice {
-  [key: string]: {
-    price: number
-  }
+  [key: string]: number
 }
 
 export interface Filters {
@@ -59,12 +57,13 @@ export interface DetailedProduct extends Product {
 }
 
 export interface Order {
+  id: string,
   products: Product[],
-  total: string,
-  name: string,
-  town: string,
-  address: string,
+  total: number,
+  email: string,
+  city: string,
   phone: string,
-  payment: string,
-  courier: string
+  address: string,
+  shipping: string,
+  [key: string]: string | number | Product[]
 }
