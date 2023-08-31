@@ -16,7 +16,7 @@ def isearch(search, lang, objects):
   return queryset
 
 def search_categories(search, lang):
-  return isearch(search, lang, models.Category)
+  return isearch(search, lang, models.Category.objects)
 
 def search_products(search, lang):
   for product_name in ct.get_all_categories():
