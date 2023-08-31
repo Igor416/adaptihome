@@ -3,6 +3,10 @@ import Backend from 'i18next-http-backend';
 import Cookies from 'js-cookie';
 import { initReactI18next } from 'react-i18next';
 
+export interface TranslationProps {
+  t: (value: string) => string
+}
+
 export function detectLang(): string {
   let lang = Cookies.get('lang');
 
