@@ -9,3 +9,6 @@ urlpatterns = [
 	path('auth/', include('rest_framework.urls')),
 	path('', include('frontend.urls'))
 ] + static(STATIC_URL, document_root=STATICFILES_DIRS)  + static(MEDIA_URL, document_root=MEDIA_ROOT) + static(LOCALES_URL, document_root=LOCALES_ROOT)
+
+handler404 = 'frontend.views.redirect_to_home'
+handler500 = 'frontend.views.redirect_to_home'
