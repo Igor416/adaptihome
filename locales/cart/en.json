@@ -1,0 +1,23 @@
+{
+  "summary": "SUMMARY",
+  "shipping_address": "SHIPPING ADDRESS",
+  "shipping_method": "SHIPPING METHOD",
+  "confirmation": "CONFIRMATION",
+  "no_products": "No Products.",
+  "length": "Length",
+  "width": "Width",
+  "total": "Total (tax excl.)",
+  "email": "Email",
+  "city": "City",
+  "phone": "Phone Number",
+  "address": "Street Address",
+  "showroom": "Adaptihome Showroom.",
+  "courier": "Courier Shipping.",
+  "free": "Free",
+  "shipping_info": "Shipping Info.",
+  "subtotal": "Subtotal",
+  "shipping": "Shipping",
+  "back": "Go back",
+  "next": "Next Step",
+  "submit": "Submit Order"
+}

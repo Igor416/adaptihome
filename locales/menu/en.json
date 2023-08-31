@@ -3,5 +3,10 @@
   "products": "products",
   "about": "about",
   "contacts": "contacts",
-  "cart": "cart"
+  "cart": "cart",
+  "search": "Search products...",
+  "help": "If you didn\"t find what you were looking for, try changing the language",
+  "search_categories": "Categories",
+  "search_products": "Products",
+  "from": "from"
 }
