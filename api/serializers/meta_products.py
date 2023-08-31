@@ -41,7 +41,7 @@ class DetailedProductSerializer(ProductSerializer):
 
     def to_representation(self, obj):
         r = super().to_representation(obj)
-        
+        del r['id']
         r['characteristic'] = {}
         r['images'].insert(0, r['shortcut'])
         order = ct.get_order(obj.get_name())

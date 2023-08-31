@@ -35,7 +35,7 @@ class DetailedProductSerializerFactory(ProductSerializerFactory):
         self.serializer = DetailedProductSerializer
     
     def set_Meta_fields(self):
-        self.Meta.exclude = ['id']
+        self.Meta.fields = '__all__'
             
     def set_fields(self):
         for prop in filter(lambda prop: prop != 'rigidity', ct.get_all_props(self.model.get_name())):
