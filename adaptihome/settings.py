@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['adaptihome.pythonanywhere.com', 'www.adaptihome.cy', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -20,9 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	'api.apps.ApiConfig',
 	'frontend.apps.FrontendConfig',
-	'rest_framework',
-	'corsheaders',
-    'django_filters'
+	'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -76,10 +74,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
-}
 
 LANGUAGE_CODE = 'en-us'
 
