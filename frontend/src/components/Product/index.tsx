@@ -79,7 +79,7 @@ export default function Product() {
             </div>
           )}
         </Section>
-        <Section id='structure' title={t('structure')} opened={openedSection === 2} open={() => openSection(openedSection === 2 ? -1 : 2)}>
+        {product.structure && <Section id='structure' title={t('structure')} opened={openedSection === 2} open={() => openSection(openedSection === 2 ? -1 : 2)}>
           {product.structure.map((layer, i) => 
             <div key={i} className='d-flex py-2 align-items-center'>
               <div className='col-sm-3 h5'>
@@ -93,7 +93,7 @@ export default function Product() {
               </div>
             </div>
           )}
-        </Section>
+        </Section>}
       </div>
       <SideText marginBottom={0} text={t('related') + '.'} />
       <ProductList products={[product]} />

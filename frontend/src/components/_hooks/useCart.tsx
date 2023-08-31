@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Product, Size } from "../../JSONTypes";
 import Cookies from "js-cookie";
 import useDiscount from "./useDiscount";
+import { getOrder, sendOrder, updateOrderProducts } from "../../api";
 
 export default function useCart() {
   const [total, setTotal] = useState(0)
@@ -10,14 +11,20 @@ export default function useCart() {
   const [fetched, fetch] = useState(false)
 
   useEffect(() => {
-    const products = Cookies.get('products')
-    fetch(true)
-    setProducts(products ? JSON.parse(products) : [])
+    const orderId = Cookies.get('orderId')
+    if (orderId) {
+      getOrder(orderId).then(resp => {
+        fetch(true)
+        setProducts(resp.products)  
+      })
+    } else {
+      fetch(true)
+      setProducts([])
+    }
   }, [])
 
   useEffect(() => {
     if (fetched) {
-      Cookies.set('products', JSON.stringify(products))
       let total = 0;
       for (let product of products) {
         for (let size of product.sizes) {
@@ -32,6 +39,13 @@ export default function useCart() {
         }
       }
       setCount(count)
+
+      const orderId = Cookies.get('orderId')
+      if (orderId) {
+        updateOrderProducts(orderId, products, total).then(_ => {})
+      } else if (products.length > 0) {
+        sendOrder(products, total).then(resp => Cookies.set('orderId', resp.id, { expires: 30 }))
+      }
     }
   }, [products])
 

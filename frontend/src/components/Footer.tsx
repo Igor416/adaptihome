@@ -26,6 +26,8 @@ export default function Footer() {
     </div>
     <div className='col-2 d-flex flex-column h5 text-end'>
       <span>Made by @Grosu Igor, 2023</span>
+      <span>tel: +3579691747</span>
+      <span>mail: +3579691747</span>
     </div>
     <div className='col-3'></div>
   </div>

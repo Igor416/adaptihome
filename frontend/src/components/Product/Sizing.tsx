@@ -1,12 +1,12 @@
 import { Size } from "../../JSONTypes";
+import { TranslationProps } from "../../i18n";
 import SizeDisplay from "../_reusables/SizeDisplay";
 import Circle from "./Circle";
 
-interface SizingProps {
+interface SizingProps extends TranslationProps {
   sizes: Size[],
   pickedSize: number,
-  pickSize: (val: number) => void,
-  t: (val: string) => string
+  pickSize: (val: number) => void
 }
 
 export default function Sizing({sizes, pickedSize, pickSize, t}: SizingProps) {

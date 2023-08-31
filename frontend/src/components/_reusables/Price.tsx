@@ -3,17 +3,18 @@ import useDiscount from "../_hooks/useDiscount";
 
 interface PriceProps {
   discount: number,
-  size: Size,
+  size?: Size,
+  price?: number,
   from?: string
 }
 
-export default function Price({discount, size, from}: PriceProps) {
-  const price = useDiscount(size, discount)
+export default function Price({discount, size, price, from}: PriceProps) {
+  const val = useDiscount(size, price, discount)
 
   return <div className='d-flex flex-nowrap'>
     {from && <span className='me-1'>{from}</span>}
     <span className={discount != 0 ? 'text-teal' : ''}>
-      {price.toFixed(2)}
+      {val.toFixed(2)}
     </span>
     <sup>EUR</sup>
   </div>

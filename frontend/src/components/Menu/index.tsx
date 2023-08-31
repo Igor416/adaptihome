@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useTranslation } from 'react-i18next';
-import Hoverable from './_reusables/Hoverable';
+import Hoverable from '../_reusables/Hoverable';
+import SearchBar from './SearchBar';
 
 interface CountProps {
   count: number
 }
 
 export default function Menu({count}: CountProps) {
-  const [search, setSearch] = useState('')
   const [t, i18n] = useTranslation('menu')
 
   return <div className='d-flex align-items-center w-100 py-5'>
@@ -38,17 +38,8 @@ export default function Menu({count}: CountProps) {
         <Hoverable color='blue'>{t('contacts')}</Hoverable>
       </Link>
     </div>
-    <div style={{height: '3vw'}} className='d-flex justify-content-end align-items-center col-3 flex-nowrap'>
-      <input
-        className='p-3 rounded-end rounded-pill bg-whitesmoke border-0 no-hover w-100'
-        type='text'
-        id='search_query_input'
-        value={search}
-        onChange={e => setSearch(e.target.value)}
-      />
-      <button className='p-3 rounded-start rounded-pill bg-whitesmoke border-0 no-hover'>
-        <FontAwesomeIcon icon={faSearch} color='var(--blue)' />
-      </button>
+    <div className='d-flex align-items-center col-3 flex-nowrap'>
+      <SearchBar t={t} />
       <div className='mx-4' />
       <div className='d-flex flex-nowrap h3'>
         <div onClick={() => i18n.changeLanguage('en')}>

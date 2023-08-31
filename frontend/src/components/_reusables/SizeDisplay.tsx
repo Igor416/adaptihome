@@ -1,8 +1,8 @@
 import { Size } from "../../JSONTypes"
+import { TranslationProps } from "../../i18n"
 
-interface SizeDisplayProps {
-  size: Size,
-  t: (val: string) => string
+interface SizeDisplayProps extends TranslationProps {
+  size: Size
 }
 
 export default function SizeDisplay({size, t}: SizeDisplayProps) {
