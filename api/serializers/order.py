@@ -18,6 +18,7 @@ class OrderSerializer(LangDetectiveSerializer):
   
   def save_sizes(self, order, sizes):
     existing = models.OrderedSize.objects.filter(order=order)
+    created = []
     for raw_size in sizes:
       size = models.Size.objects.get(product=raw_size['product'], price=raw_size['price'])
       ordered_size = existing.filter(size=size)
@@ -25,8 +26,10 @@ class OrderSerializer(LangDetectiveSerializer):
         ordered_size.update(quantity=raw_size['quantity'])
         existing.difference(ordered_size)
       else:
-        models.OrderedSize.objects.create(order=order, size=size, quantity=raw_size['quantity'])
+        created.append((size, raw_size['quantity']))
     existing.delete()
+    for size, quantity in created:
+      models.OrderedSize.objects.create(order=order, size=size, quantity=quantity)
     order.save()
     return order
   
