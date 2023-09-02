@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import Label from "./Label"
+import { Link } from 'react-router-dom'
+import Label from './Label'
 
 interface ShopProps {
   name: string,
@@ -11,7 +11,7 @@ interface ShopProps {
 }
 
 export default function Shop({name, email, phone, hours, address, url}: ShopProps) {
-  return <div className='d-flex flex-column col-5 align-items-start m-4'>
+  return <div className='d-flex flex-column col-sm-5 align-items-start m-sm-4'>
     <span className='h3'>{name}</span>
     <div className='d-flex'>
       <div className='d-flex col-6'>

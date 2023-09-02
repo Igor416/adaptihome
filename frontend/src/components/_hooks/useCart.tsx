@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Product, Size } from "../../JSONTypes";
-import Cookies from "js-cookie";
-import useDiscount from "./useDiscount";
-import { getOrder, sendOrder, updateOrderProducts } from "../../api";
+import { useEffect, useState } from 'react';
+import { Product, Size } from '../../JSONTypes';
+import Cookies from 'js-cookie';
+import useDiscount from './useDiscount';
+import { getOrder, sendOrder, updateOrderProducts } from '../../api';
 
 export default function useCart() {
   const [total, setTotal] = useState(0)

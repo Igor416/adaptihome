@@ -13,11 +13,12 @@ import SideText from './SideText'
 import ProductList from '../_reusables/ProductList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { Product, Size } from '../../JSONTypes'
+import { Product } from '../../JSONTypes'
 import { OutletContextProps } from '../App'
 import { useOutletContext } from 'react-router-dom'
+import { ResponsiveProps } from '../..'
 
-export default function Product() {
+export default function Product({isMobile}: ResponsiveProps) {
   const outletContext: OutletContextProps = useOutletContext()
   const product = useProduct()
   const [t, i18n] = useTranslation('product')
@@ -38,24 +39,24 @@ export default function Product() {
   }
 
   if (product) {
-    return <div className='d-flex mt-5 flex-column'>
-      <div className='d-flex flex-nowrap align-items-center'>
-        <div className='d-flex justify-content-end col-6'>
+    return <div className='d-flex mt-sm-5 flex-column'>
+      <div className='d-flex flex-column flex-sm-row flex-sm-nowrap align-items-center'>
+        <div className='d-flex justify-content-end col-sm-6'>
           <HoverableImage src={product.shortcut} styles={{opacity: 0.9}} >
             
           </HoverableImage>
         </div>
-        <div className='d-flex flex-column align-items-start mx-5 px-5'>
-          <span className='h3 mx-5'>{product.name}</span>
-          <span className='h6 m-5'>{product.desc}</span>
-          <div className='d-flex justify-content-between w-100'>
-            <div className='d-flex flex-column mx-5 h4'>
+        <div className='d-flex flex-column align-items-start p-4 py-sm-0 text-center text-sm-start mx-sm-5 px-sm-5'>
+          <span className='h3 mx-sm-5 w-100'>{product.name}</span>
+          <span className='h6 m-sm-5'>{product.desc}</span>
+          <div className='d-flex flex-column flex-sm-row justify-content-between w-100 mt-5 mt-sm-0 align-items-center'>
+            <div className='d-flex flex-column mx-sm-5 h4'>
               <OldPrice discount={product.discount + product.sizes[pickedSize].discount} size={product.sizes[pickedSize]} />
               <Price discount={product.discount} size={product.sizes[pickedSize]} />
             </div>
             <div
               onClick={() => outletContext.addSize(outletContext.clearProduct(product, product.sizes[pickedSize]))}
-              className='p-3 text-white bg-blue rounded-pill'
+              className='p-3 text-white bg-blue col-12 col-sm-auto mt-4 mt-sm-0 rounded-pill'
             >
               <span className='me-1'>{t('Add to Cart')}</span>
               <FontAwesomeIcon icon={faShoppingCart} />
@@ -64,12 +65,12 @@ export default function Product() {
         </div>
       </div>
       <SideText text={t('size') + '.'} />
-      <div className='d-flex flex-nowrap align-items-center my-5'>
-        <SlideShow images={product.images} />
-        <Sizing sizes={product.sizes} pickedSize={pickedSize} pickSize={pickSize} t={t} />
+      <div className='d-flex flex-column flex-sm-row flex-sm-nowrap align-items-center my-5'>
+        <SlideShow images={product.images} isMobile={isMobile} />
+        <Sizing sizes={product.sizes} pickedSize={pickedSize} pickSize={pickSize} t={t} isMobile={isMobile} />
       </div>
-      <SideText text={t('description') + ':'} marginBottom={0} />
-      <div style={{margin: '0 20vw'}} className='accordion d-flex flex-column' id='details'>
+      <SideText text={t('description') + ':'} />
+      <div style={{margin: isMobile ? 0 : '0 20vw'}} className='accordion d-flex flex-column p-4 p-sm-0' id='details'>
         <span className='h5'>{product.desc}</span>
         <Section id='information' title={t('information')} opened={openedSection === 1} open={() => openSection(openedSection === 1 ? -1 : 1)}>
           {Object.keys(product.characteristic).map((key, i) => 
@@ -96,10 +97,10 @@ export default function Product() {
         </Section>}
       </div>
       <SideText marginBottom={0} text={t('related') + '.'} />
-      <ProductList products={[product]} />
+      <ProductList products={[product]} isMobile={isMobile} />
       <Centralizer>
         <div className='p-5'>
-          <LinkImage to='/shop/folding_bed/' image='https://flatstudio.md/img/footeradvanced/type_shop.jpg'>{t('shop_more')}<sup>130</sup></LinkImage>
+          <LinkImage to='/shop/folding_bed/' image='https://flatstudio.md/img/footeradvanced/type_shop.jpg' isMobile={isMobile}>{t('shop_more')}<sup>130</sup></LinkImage>
         </div>
       </Centralizer>
     </div>

@@ -1,12 +1,13 @@
 export interface SearchResults {
   categories: Array<{
     link: string,
-    text: string,
+    category: string,
     count: string
   }>,
   products: Array<{
     link: string,
-    text: string,
+    category: string,
+    name: string,
     price: number,
     discount: number
   }>

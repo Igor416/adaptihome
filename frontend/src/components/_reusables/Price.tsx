@@ -1,5 +1,5 @@
-import { Size } from "../../JSONTypes";
-import useDiscount from "../_hooks/useDiscount";
+import { Size } from '../../JSONTypes';
+import useDiscount from '../_hooks/useDiscount';
 
 interface PriceProps {
   discount: number,

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { Order, Product } from "../../JSONTypes";
-import Cookies from "js-cookie";
-import { getOrder } from "../../api";
+import { useEffect, useState } from 'react';
+import { Order, Product } from '../../JSONTypes';
+import Cookies from 'js-cookie';
+import { getOrder } from '../../api';
 
 export interface OrderProps {
   order: Order,

@@ -1,7 +1,7 @@
-import { t } from "i18next"
-import PlusIcon from "../Shop/PlusIcon"
-import { DetailedProduct } from "../../JSONTypes"
-import { ReactNode } from "react"
+import { t } from 'i18next'
+import PlusIcon from '../Shop/PlusIcon'
+import { DetailedProduct } from '../../JSONTypes'
+import { ReactNode } from 'react'
 
 interface SectionProps {
   id: string,

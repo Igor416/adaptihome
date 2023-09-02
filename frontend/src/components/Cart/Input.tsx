@@ -1,4 +1,4 @@
-import { TranslationProps } from "../../i18n"
+import { TranslationProps } from '../../i18n'
 
 interface InputProps extends TranslationProps {
   id: string,
@@ -9,7 +9,7 @@ interface InputProps extends TranslationProps {
 }
 
 export default function Input({t, id, value, setter, side, disabled = false}: InputProps) {
-  return <div className={'d-flex flex-column m-3 py-2 h6 ' + (side === 'left' ? 'ms-0' : 'me-0')}>
+  return <div className={'d-flex flex-column m-sm-3 py-2 h6 ' + (side === 'left' ? 'ms-0' : 'me-0')}>
     <label className='text-secondary mb-2' htmlFor={id}>{t(id)}</label>
     {
       disabled

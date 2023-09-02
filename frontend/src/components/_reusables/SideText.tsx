@@ -1,9 +1,14 @@
-interface SideTextProps {
+import { ResponsiveProps } from "../.."
+
+interface SideTextProps extends ResponsiveProps {
   text: string,
   right: string
 }
 
-export default function SideText({text, right}: SideTextProps) {
+export default function SideText({text, right, isMobile}: SideTextProps) {
+  if (isMobile) {
+    return <div></div>
+  }
   return <div
     style={{
       top: '80vh', 

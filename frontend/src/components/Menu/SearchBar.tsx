@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react"
-import { SearchResults } from "../../JSONTypes"
-import { sendSearch } from "../../api"
-import { TranslationProps } from "../../i18n"
-import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Hoverable from "../_reusables/Hoverable"
-import { Link } from "react-router-dom"
-import OldPrice from "../_reusables/OldPrice"
-import Price from "../_reusables/Price"
+import { useState, useEffect } from 'react'
+import { SearchResults } from '../../JSONTypes'
+import { sendSearch } from '../../api'
+import { TranslationProps } from '../../i18n'
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Hoverable from '../_reusables/Hoverable'
+import { Link } from 'react-router-dom'
+import OldPrice from '../_reusables/OldPrice'
+import Price from '../_reusables/Price'
+import { ResponsiveProps } from '../..'
 
-export default function SearchBar({t}: TranslationProps) {
+export default function SearchBar({t, isMobile}: TranslationProps & ResponsiveProps) {
   const [search, setSearch] = useState('')
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(true)
   const [res, setRes] = useState<SearchResults>({categories: [], products: []})
 
   useEffect(() => {
@@ -39,12 +40,12 @@ export default function SearchBar({t}: TranslationProps) {
       </button>
     </div>
     <div
-      style={{
+      style={Object.assign({
         zIndex: 1200,
-        width: '40%',
+        width: isMobile ? 'calc(100% - 3rem)' : '40%',
         display: show ? 'block' : 'none',
-      }}
-      className='border bg-white position-absolute py-3 px-4 mt-4'
+      }, isMobile ? {left: '1.5rem'} : {})}
+      className={'border bg-white position-absolute py-3 px-4 mt-4' + (isMobile ? ' h6' : '')}
     >
       <span className='mb-4'>{t('help')}</span>
       <div className='w-100 d-flex flex-column border-bottom mt-3'>
@@ -52,7 +53,7 @@ export default function SearchBar({t}: TranslationProps) {
         {res.categories.map((item, index) => 
           <div key={index} className='d-flex row-nowrap justify-content-between pb-2 text-end link'>
             <Link onClick={() => setShow(false)} className='no-link no-hover' to={item.link}>
-              <Hoverable color='blue'>{item.text}</Hoverable>
+              <Hoverable color='blue'>{item.category}</Hoverable>
             </Link>
             <span>({item.count})</span>
           </div>
@@ -61,9 +62,11 @@ export default function SearchBar({t}: TranslationProps) {
       <div className='w-100 d-flex flex-column border-bottom mt-3'>
         <span className='h5 pb-2'>{t('search_products')}: </span>
         {res.products.map((item, index) => 
-          <div key={index} className='d-flex row-nowrap justify-content-between pb-2 text-end link'>
+          <div key={index} className='d-flex row-nowrap justify-content-between pb-2 text-sm-end link'>
             <Link onClick={() => setShow(false)} className='no-link no-hover' to={item.link}>
-              <Hoverable color='blue'>{item.text}</Hoverable>
+              <Hoverable color='blue'>
+                {item.category}: {item.name}
+              </Hoverable>
             </Link>
             <OldPrice discount={item.discount} price={item.price} />
             <Price from={t('from')} discount={item.discount} price={item.price} />

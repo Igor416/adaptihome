@@ -1,4 +1,4 @@
-import { Size } from "../../JSONTypes";
+import { Size } from '../../JSONTypes';
 
 interface OldPriceProps {
   discount: number,

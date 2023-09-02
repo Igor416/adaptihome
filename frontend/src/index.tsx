@@ -36,17 +36,23 @@ export interface LinksProps {
 	links: Link[]
 }
 
+export interface ResponsiveProps {
+	isMobile: boolean
+}
+
+const isMobile = window.matchMedia('(max-width: 1080px)').matches
+
 root.render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<Routes>
-				<Route path='' element={<App />}>
-					<Route path='/' element={<Home links={links} />} />
-					<Route path='/shop/:category/' element={<Shop links={links} />} />
-					<Route path='/product/:category/:name/' element={<Product />} />
-					<Route path='/cart/' element={<Cart />} />
-					<Route path='/about/' element={<About />} />
-					<Route path='/contacts/' element={<Contacts />} />
+				<Route path='' element={<App isMobile={isMobile} />}>
+					<Route path='/' element={<Home isMobile={isMobile} links={links} />} />
+					<Route path='/shop/:category/' element={<Shop isMobile={isMobile} links={links} />} />
+					<Route path='/product/:category/:name/' element={<Product isMobile={isMobile} />} />
+					<Route path='/cart/' element={<Cart isMobile={isMobile} />} />
+					<Route path='/about/' element={<About isMobile={isMobile} />} />
+					<Route path='/contacts/' element={<Contacts isMobile={isMobile} />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

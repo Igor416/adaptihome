@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { DetailedProduct } from "../../JSONTypes";
-import { getProduct } from "../../api";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { DetailedProduct } from '../../JSONTypes';
+import { getProduct } from '../../api';
 
 export default function useProduct() {
   const params = useParams()

@@ -1,32 +1,40 @@
-import { useState } from "react"
-import HoverableImage from "../_reusables/HoverableImage"
-import Circle from "./Circle"
+import { useState } from 'react'
+import HoverableImage from '../_reusables/HoverableImage'
+import Circle from './Circle'
+import { ResponsiveProps } from '../..'
 
-interface SlideShowProps {
+interface SlideShowProps extends ResponsiveProps {
   images: string[]
 }
 
-export default function SlideShow({images}: SlideShowProps) {
+export default function SlideShow({images, isMobile}: SlideShowProps) {
   const [pickedImage, pickImage] = useState(0)
 
-  return <div className='d-flex flex-nowrap col-6'>
-    <div className='d-flex flex-column align-items-center p-5'>
-      {images.map((image, i) => 
-        <div key={i} className='mb-4'>
-          <Circle size={2.5} color='dark' active={i === pickedImage} setActive={() => pickImage(i)} />
+  return <div
+    id='photos'
+    className='carousel slide d-flex flex-column-reverse flex-sm-row flex-sm-nowrap col-sm-6'
+    data-bs-ride='carousel'
+    data-bs-interval='false'
+  >
+    <div className='d-flex flex-sm-column align-items-sm-center p-5'>
+      {images.map((_, i) => 
+        <div data-bs-target="#photos" data-bs-slide-to={i} key={i} className='mb-sm-4 mx-3 mx-sm-0'>
+          <Circle size={isMobile ? 10 : 2.5} color='dark' active={i === pickedImage} setActive={() => pickImage(i)} />
         </div>
       )}
     </div>
-    <div className='position-relative flex-grow-1'>
+    <div className='flex-grow-1 carousel-inner'>
       {images.map((image, i) => 
         <HoverableImage
           key={i}
           styles={{
-            opacity: i === pickedImage ? 1 : 0
+            opacity: 1
           }}
-          className={'position-absolute w-100 h-100 ' + (i === pickedImage ? 'visible' : 'invisible')}
+          className={'carousel-item' + (i === 0 ? ' active' : '')}
           src={image}
-        ><></></HoverableImage>
+        >
+          
+        </HoverableImage>
       )}
     </div>
   </div>

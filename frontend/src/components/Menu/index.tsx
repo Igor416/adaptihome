@@ -5,41 +5,34 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useTranslation } from 'react-i18next';
 import Hoverable from '../_reusables/Hoverable';
 import SearchBar from './SearchBar';
+import MobileMenu from './Mobile';
+import { ResponsiveProps } from '../..';
+import Links from './Links';
 
-interface CountProps {
+interface CountProps extends ResponsiveProps {
   count: number
 }
 
-export default function Menu({count}: CountProps) {
+export default function Menu({count, isMobile}: CountProps) {
   const [t, i18n] = useTranslation('menu')
 
+  if (isMobile) {
+    return <MobileMenu t={t} i18n={i18n} count={count} />
+  }
+
   return <div className='d-flex align-items-center w-100 py-5'>
-    <div className='d-flex justify-content-center col-3'>
+    <Link to='/' className='d-flex text-decoration-none justify-content-center col-3'>
       <img style={{width: '5vw', aspectRatio: 1}} src='/static/images/logo.svg' />
       <div className='d-flex ms-2 flex-column justify-content-end'>
         <span className='h2 text-red'>Adapti</span>
         <span className='h1 text-blue'>Home</span>
       </div>
-    </div>
+    </Link>
     <div className='d-flex h4 col-3'>
-      <Link to='/' className='text-decoration-none'>
-        <Hoverable color='blue'>{t('home')}</Hoverable>
-      </Link>
-      <div className='mx-2' />
-      <Link to='/shop/folding_bed/' className='text-decoration-none'>
-        <Hoverable color='blue'>{t('products')}</Hoverable>
-      </Link>
-      <div className='mx-2' />
-      <Link to='/about' className='text-decoration-none'>
-        <Hoverable color='blue'>{t('about')}</Hoverable>
-      </Link>
-      <div className='mx-2' />
-      <Link to='/contacts' className='text-decoration-none'>
-        <Hoverable color='blue'>{t('contacts')}</Hoverable>
-      </Link>
+      <Links t={t} />
     </div>
     <div className='d-flex align-items-center col-3 flex-nowrap'>
-      <SearchBar t={t} />
+      <SearchBar t={t} isMobile={false} />
       <div className='mx-4' />
       <div className='d-flex flex-nowrap h3'>
         <div onClick={() => i18n.changeLanguage('en')}>

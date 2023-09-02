@@ -1,4 +1,4 @@
-import { Size } from "../../JSONTypes";
+import { Size } from '../../JSONTypes';
 
 export default function useDiscount(size?: Size, price?: number, productDiscount: number = 0) {
   if (size) {

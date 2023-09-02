@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { LinksProps } from '../..';
+import { LinksProps, ResponsiveProps } from '../..';
 import { Filters, MattressColectionPrice, Product } from '../../JSONTypes';
 import { getMattressColectionsPrice, getProducts } from '../../api';
 import SideText from '../_reusables/SideText';
@@ -11,8 +11,9 @@ import useCategory from './useCategory';
 import useFilters from './useFilters';
 import ProductList from '../_reusables/ProductList';
 import Price from '../_reusables/Price';
+import Tab from './Tab';
 
-export default function Shop({links}: LinksProps) {
+export default function Shop({links, isMobile}: LinksProps & ResponsiveProps) {
   const [category, setCategory] = useState('folding_bed')
   const [filters, setFilters] = useState<Filters>({order: ['low']});
   const [categoryOpened, openCategory] = useState(false)
@@ -51,38 +52,26 @@ export default function Shop({links}: LinksProps) {
   }, [filterOpened])
 
   return <div className='d-flex flex-column align-items-center h4 text-center'>
-    <SideText text='shop' right='7' />
+    <SideText text='shop' right='7' isMobile={isMobile} />
     <div id='shop_menu' className='d-flex flex-nowrap border-top border-bottom w-100'>
-      <div className='p-5 col-6 d-flex border-end'>
-        <div className='col-6'></div>
-        <div onClick={() => openCategory(!categoryOpened)} className='col-6 d-flex justify-content-between align-items-end'>
-          <span>{t(category + '.name', {ns: 'links'})}</span>
-          <PlusIcon size={2} active={categoryOpened} />
-        </div>
-      </div>
-      <div className='p-5 col-6 d-flex border-start'>
-        <div onClick={() => openFilter(!filterOpened)} className='col-6 d-flex justify-content-between align-items-end'>
-          <span>{t('filter')}</span>
-          <PlusIcon size={2} active={filterOpened} />
-        </div>
-        <div className='col-6'></div>
-      </div>
+      <Tab setter={openCategory} active={categoryOpened} text={t(category + '.name', {ns: 'links'})} direction='' />
+      <Tab setter={openFilter} active={filterOpened} text={t('filter')} direction='-reverse' />
     </div>
-    <Submenu active={categoryOpened} side='left'>
+    <Submenu active={categoryOpened} side='left' isMobile={isMobile}>
       {links.map((link, i) => {
         return <div
           key={i}
           onClick={() => {setCategory(link.name);openCategory(false);setFilters({order: ['low']})}}
           className={'d-flex py-2' + (link.name === category ? ' text-teal' : '')}
         >
-          <span>
+          <span className='w-100'>
             {t(link.name + '.name', {ns: 'links'})}
             <sup>{link.count}</sup>
           </span>
         </div>
       })}
     </Submenu>
-    <Submenu active={filterOpened} side='right' t={t} clear={() => setFilters({order: ['low']})}>
+    <Submenu active={filterOpened} side='right' t={t} clear={() => setFilters({order: ['low']})} isMobile={isMobile}>
       <div className='h6 text-secondary py-2'>{t('order_by')}</div>
       {['a', 'z', 'low', 'high'].map((ordering, i) => 
         <Checkable key={i} checked={filters.order.includes(ordering)} value={t(ordering)} onChecked={() => updateFilters('order', false, ordering)} />
@@ -110,6 +99,6 @@ export default function Shop({links}: LinksProps) {
         </div>
       )}
     </Submenu>
-    <ProductList products={products} />
+    <ProductList products={products} isMobile={isMobile} />
   </div>
 }
