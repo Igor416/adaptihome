@@ -83,14 +83,15 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR.joinpath('static')
+STATIC_URL = 'static/'
+STATIC_ROOT = '/home/adaptihome/adaptihome/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR.joinpath('media')
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
-LOCALES_URL = '/locales/'
-LOCALES_ROOT = BASE_DIR.joinpath('locales')
+LOCALES_URL = 'locales/'
+LOCALES_ROOT = BASE_DIR / 'locales'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
