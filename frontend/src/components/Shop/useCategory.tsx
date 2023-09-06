@@ -9,7 +9,7 @@ export default function useCategory(category: string, setCategory: (val: string)
 
   useEffect(() => {
     if (!params.category || links.filter(l => l.name === params.category).length === 0) {
-      navigate(`/shop/folding_bed/` + location.search)
+      navigate(`/shop/FoldingBed/` + location.search)
       fetch(true)
       return
     }

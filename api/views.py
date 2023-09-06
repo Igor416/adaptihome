@@ -26,12 +26,11 @@ class MattressColectionsPriceView(ListAPIView):
 class ListProductView(APIView):
     @detect_lang
     def get(self, request, lang, category):
-        category = ''.join([part.title() for part in category.split('_')])
         model = getattr(models, category)
         if isinstance(model, list):
             accessories = []
             for product in models.Accessories:
-                if request.query_params.get(product.get_name().lower(), None):
+                if request.query_params.get(product.get_name(), None):
                     accessories = [product]
                     break
             else:
@@ -39,8 +38,7 @@ class ListProductView(APIView):
                     if product == 'all':
                         accessories = model
                         break
-                    else:
-                        accessories.append(getattr(models, ''.join([part.title() for part in product.split('_')])))
+                    accessories.append(getattr(models, product))
             resp = []
             for model in accessories:
                 resp.extend(self.get_response_data(model, lang, request.query_params))
@@ -63,7 +61,6 @@ class ListProductView(APIView):
 class RetrieveProductView(APIView):
     @detect_lang
     def get(self, request, lang, category, name):
-        category = ''.join([part.title() for part in category.split('_')])
         model = getattr(models, category)
         queryset = model.objects.get(name=name)
         serializer = DetailedProductSerializerFactory(model, lang).create(queryset, lang=lang)

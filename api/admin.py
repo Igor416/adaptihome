@@ -9,9 +9,9 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(models.Choice)
 class ChoiceAdmin(admin.ModelAdmin):
-    list_filter = ('category',)
+    list_filter = ('categories',)
     ordering = ['name']
-    exclude = ['category']
+    exclude = ['categories']
 
 @admin.register(models.Technology)
 class TechnologAdmin(admin.ModelAdmin):
@@ -64,10 +64,6 @@ for product_name in ct.get_all_categories():
     model._meta.verbose_name = f'{ct.get_pr_trans(product_name)}'
     model._meta.verbose_name_plural = ct.get_pr_trans(product_name)
     setattr(form, 'model', model)
-    
-    ordering = ['name']
-    if model is not models.Basis:
-        ordering += ['name']
         
     layers = {
         ct.MATTRESS: LayerMattressInline,
@@ -77,8 +73,7 @@ for product_name in ct.get_all_categories():
 
     attrs = {
         'form': form,
-        'ordering': ordering,
-        'actions': [remove_discount]
+        'actions': (remove_discount,)
     }
     
     if product_name in layers.keys():

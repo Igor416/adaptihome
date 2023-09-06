@@ -35,7 +35,7 @@ from .choice import Choice
 from .size import Size
 from .files import Image
 from .technologies import Technology, LayerMattress, LayerPillow, LayerMattressPad
-from .products import FoldingBed, Bed, Mattress, Table, Pillow, MattressPad, Blanket, Basis, Puff
+from .products import FoldingBed, Bed, Mattress, Table, Pillow, MattressPad, Blanket, Basis, Puff, Accessory
 from .order import Order, OrderedSize
 
-Accessories = [Pillow, MattressPad, Blanket, Basis]
+Accessories = [Pillow, MattressPad, Blanket, Basis, Accessory]

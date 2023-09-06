@@ -1,12 +1,12 @@
 [
   {
-    "name": "folding_bed",
+    "name": "FoldingBed",
     "image": "https://rabatabil.ro/c/3-footer_default/wall-beds.jpg",
     "count": 0,
     "filters": []
   },
   {
-    "name": "bed",
+    "name": "Bed",
     "image": "https://rabatabil.ro/c/3-footer_default/wall-beds.jpg",
     "count": 26,
     "filters": [
@@ -18,7 +18,7 @@
     ]
   },
   {
-    "name": "mattress",
+    "name": "Mattress",
     "image": "https://rabatabil.ro/c/16-footer_default/saltele-si-accesorii.jpg",
     "count": 48,
     "filters": [
@@ -40,20 +40,20 @@
     ]
   },
   {
-    "name": "table",
+    "name": "Table",
     "image": "https://rabatabil.ro/c/15-footer_default/chairs-and-tables.jpg",
     "count": 0,
     "filters": []
   },
   {
-    "name": "accessories",
+    "name": "Accessories",
     "image": "https://rabatabil.ro/c/16-footer_default/saltele-si-accesorii.jpg",
     "count": 40,
     "filters": [
       {
         "key": "category",
         "multiple": true,
-        "values": ["pillow", "mattress_pad", "blanket", "basis"]
+        "values": ["Pillow", "MattressPad", "Blanket", "Basis"]
       },
       {
         "key": "age",
@@ -61,24 +61,24 @@
         "values": ["Children", "Teenagers", "Adults"]
       },
       {
-        "key": "pillow",
+        "key": "Pillow",
         "multiple": false,
         "values": ["all", "latex", "memory_foam"]
       },
       {
-        "key": "mattresspad",
+        "key": "MattressPad",
         "multiple": false,
         "values": ["all", "transform", "protect"]
       },
       {
-        "key": "blanket",
+        "key": "Blanket",
         "multiple": false,
         "values": ["all", "Bamboo", "Sumwin", "Sheep", "Thermoregulation"]
       }
     ]
   },
   {
-    "name": "puff",
+    "name": "Puff",
     "image": "https://rabatabil.ro/c/15-footer_default/chairs-and-tables.jpg",
     "count": 16,
     "filters": []

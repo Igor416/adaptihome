@@ -13,9 +13,9 @@ export default function Footer({isMobile}: ResponsiveProps) {
       <Icons isMobile={isMobile}/>
     </div>
     <div className='col-sm-2 d-flex flex-column text-center text-sm-end'>
-      <span>Made by @Grosu Igor, 2023</span>
       <span>tel: +3579691747</span>
-      <span>mail: +3579691747</span>
+      <span>mail: adaptihomecy@gmail.com</span>
+      <span style={{fontSize: 12}}>Made by @Grosu Igor, 2023</span>
     </div>
     <div className='col-sm-3'></div>
   </div>

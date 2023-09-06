@@ -8,6 +8,7 @@ MATTRESSPAD = 'MattressPad'
 BLANKET = 'Blanket'
 BASIS = 'Basis'
 PUFF = 'Puff'
+ACCESSORY = 'Accessory'
 
 #Properties
 MATTRESS_HEIGHT = 'mattress_height'
@@ -59,21 +60,38 @@ CATALOG = {
   BED: [BED_TYPE],
   MATTRESS: [MATTRESS_TYPE, COLLECTION, CONSTRUCTION, RIGIDITY, SPRINGBLOCK],
   TABLE: [],
-  PILLOW: [MATERIAL_FILLER,],
+  PILLOW: [MATERIAL_FILLER],
   MATTRESSPAD: [MATTRESSPAD_TYPE, RIGIDITY, BINDING],
   BLANKET: [BLANKET_TYPE, BLANKET_COLOR, FILLING],
+  BASIS: [],
   PUFF: [MATERIAL],
-  BASIS: []
+  ACCESSORY: []
 }
 
 ORDER = {
+  FOLDINGBED: (),
+  BED: (BED_TYPE, HEADBOARD_HEIGHT, EXTRA_LENGTH, EXTRA_WIDTH),
   MATTRESS: (MATTRESS_TYPE, AGE, HEIGHT, MAX_PRESSURE, RIGIDITY + '1', RIGIDITY + '2', SPRINGS, LIFETIME, COLLECTION, SPRINGBLOCK, CONSTRUCTION, CASE),
+  TABLE: (),
   PILLOW: (AGE, MATERIAL_FILLER, HEIGHT, CASE, COVER),
   MATTRESSPAD: (AGE, MATTRESSPAD_TYPE, HEIGHT, CASE, BINDING, COVER),
   BLANKET: (BLANKET_TYPE, AGE, FILLING, DENSITY, COVER, BLANKET_COLOR),
-  BED: (BED_TYPE, HEADBOARD_HEIGHT, EXTRA_LENGTH, EXTRA_WIDTH),
+  BASIS: (DISTANCE, WIDTH, LEGS_HEIGHT, RECOMENDED),
   PUFF: (HEIGHT, MATERIAL),
-  BASIS: (DISTANCE, WIDTH, LEGS_HEIGHT, RECOMENDED)
+  ACCESSORY: ()
+}
+
+SUGGESTIONS = {
+  FOLDINGBED: [MATTRESS, PUFF],
+  BED: [MATTRESS, PUFF],
+  MATTRESS: [PILLOW, MATTRESSPAD],
+  TABLE: [ACCESSORY],
+  PILLOW: [MATTRESSPAD, BLANKET],
+  MATTRESSPAD: [PILLOW, BLANKET],
+  BLANKET: [PILLOW, MATTRESSPAD],
+  BASIS: [BED, MATTRESS],
+  PUFF: [FOLDINGBED],
+  ACCESSORY: [ACCESSORY]
 }
 
 from .translations import EN
@@ -88,8 +106,7 @@ def get_categories(property):
   if not categories:
     for pr, props in CATALOG.items():
       if property in props:
-        categories = [pr]
-        break
+        return [pr]
   return categories
 
 def get_pr_trans(product, lang=EN, plural=False):
@@ -106,6 +123,9 @@ def get_prop_trans(property, lang=EN):
 
 def get_order(model):
   return ORDER[model]
+
+def get_suggestions(model):
+  return SUGGESTIONS[model]
 
 def get_pr_choices():
   return [(key, get_pr_trans(key)) for key in CATALOG.keys()]

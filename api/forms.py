@@ -19,7 +19,7 @@ class ProductForm(forms.ModelForm):
 
 				elif name == 'sizes':
 					category = models.Category.objects.get(name=self.model.get_name())
-					by_category = models.Size.objects.filter(category=category, product=self.instance.name, ordered=False)
+					by_category = models.Size.objects.filter(category=category, product=self.instance.name)
 					field.queryset = by_category | models.Size.objects.filter(category=None, price__gt=0)
 
 				elif name == 'shortcut':
@@ -37,7 +37,12 @@ class ProductForm(forms.ModelForm):
 				elif name == 'recomended':
 					field.queryset = models.Choice.objects.filter(name='collection')
 
-				else:
+				elif name.startswith('suggestions'):
+					model = getattr(models, name.split('_')[1])
+					field.label = f'Suggestions ({model.get_name()}):'
+					field.queryset = model.objects.all()
+
+				elif not name.endswith('_dimensions'):
 					field.label = ct.get_prop_trans(name)
 					field.queryset = models.Choice.objects.filter(name=name)
 

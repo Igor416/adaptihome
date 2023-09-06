@@ -13,8 +13,9 @@ products = {
 	ct.PILLOW: (('Подушка', 'Подушки'), ('Pillow', 'Pillows')),
 	ct.MATTRESSPAD: (('Наматрасник', 'Наматрасники'), ('Mattress Pad', 'Mattress Pads')),
 	ct.BLANKET: (('Одеяло', 'Одеяла'), ('Blanket', 'Blankets')),
+	ct.BASIS: (('Основание', 'Основания'), ('Basis', 'Basises')),
 	ct.PUFF: (('Тумба', 'Тумбы'), ('Puff', 'Puffs')),
-	ct.BASIS: (('Основание', 'Основания'), ('Basis', 'Basises'))
+	ct.ACCESSORY: (('Аксессуар', 'Аксессуары'), ('Accessory', 'Accessories'))
 }
 
 properties = {
@@ -28,7 +29,7 @@ properties = {
 	ct.LIFETIME: ('Срок службы (лет)', 'Life time (years)'),
 	ct.CASE: ('Съемный чехол', 'Removable cover'),
  	ct.DEPTH: ('Глубина', 'Depth'),
-  ct.COUNTERTOP_LENGTH: ('Длина Столешница', 'Countertop length'),
+  ct.COUNTERTOP_LENGTH: ('Длина Столешницы', 'Countertop length'),
   ct.WEIGHT: ('Вес стола', 'Table Weight'),
   ct.COUNTERTOP_WEIGHT: ('Вес столешницы', 'Countertop weight'),
 	ct.DENSITY: ('Плотность наполнителя (г/м2)', 'Filling density (g/m2)'),

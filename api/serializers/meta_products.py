@@ -1,5 +1,5 @@
 from rest_framework.serializers import SerializerMethodField
-from . import catalog as ct, LangDetectiveSerializer
+from . import models, catalog as ct, LangDetectiveSerializer
 from .category import CategorySerializer
 from .size import SizeSerializer
 from .files import ImageSerializer
@@ -42,6 +42,10 @@ class DetailedProductSerializer(ProductSerializer):
     def to_representation(self, obj):
         r = super().to_representation(obj)
         del r['id']
+        for model in ct.get_suggestions(obj.get_name()):
+            del r['suggestions_' + model]
+            
+        r['suggestions'] = []
         r['characteristic'] = {}
         r['images'].insert(0, r['shortcut'])
         order = ct.get_order(obj.get_name())
@@ -58,4 +62,10 @@ class DetailedProductSerializer(ProductSerializer):
                 new_size = size.copy()
                 new_size['length'] = 190
                 r['sizes'].append(new_size)
+        
+        from .products_factory import ListedProductsSerializerFactory
+        for model in ct.get_suggestions(obj.get_name()):
+            for suggestion in getattr(obj, 'suggestions_' + model).all():
+                serializer = ListedProductsSerializerFactory(getattr(models, suggestion.get_name()), self.lang).create(suggestion, lang=self.lang)
+                r['suggestions'].append(serializer.data)
         return self.extract_lang('desc', r)

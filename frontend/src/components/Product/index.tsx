@@ -97,10 +97,10 @@ export default function Product({isMobile}: ResponsiveProps) {
         </Section>}
       </div>
       <SideText marginBottom={0} text={t('related') + '.'} />
-      <ProductList products={[product]} isMobile={isMobile} />
+      <ProductList products={product.suggestions} isMobile={isMobile} />
       <Centralizer>
         <div className='p-5'>
-          <LinkImage to='/shop/folding_bed/' image='https://flatstudio.md/img/footeradvanced/type_shop.jpg' isMobile={isMobile}>{t('shop_more')}<sup>130</sup></LinkImage>
+          <LinkImage to='/shop/FoldingBed/' image='https://flatstudio.md/img/footeradvanced/type_shop.jpg' isMobile={isMobile}>{t('shop_more')}<sup>130</sup></LinkImage>
         </div>
       </Centralizer>
     </div>

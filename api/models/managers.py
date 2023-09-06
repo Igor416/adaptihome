@@ -21,7 +21,10 @@ class ProductManager(Manager):
       part = self.objs.none()
       
       for value in values.split(','):
-        part |= getattr(self, 'get_by_' + ('type' if key == self.model.get_name().lower() else key))(value)
+        try:
+          part |= getattr(self, 'get_by_' + ('type' if key == self.model.get_name() else key))(value)
+        except AttributeError:
+          continue
         
       queryset &= part
 
@@ -130,8 +133,11 @@ class BlanketManager(ProductManager):
       
     return self.objs.filter(name__istartswith=value)
 
+class BasisManager(ProductManager):
+  pass
+
 class PuffManager(ProductManager):
   pass
 
-class BasisManager(ProductManager):
+class AccessoryManager(ProductManager):
   pass

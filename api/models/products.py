@@ -39,6 +39,7 @@ class Product(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
+        ordering = ('name',)
         abstract = True
 
 class FoldingBed(Product):
@@ -50,6 +51,9 @@ class FoldingBed(Product):
     table_dimensions = models.ManyToManyField(Size, related_name='table_dimensions%(class)s', verbose_name='Table Dimensions', blank=True)
     base = create_related_field('base')
     age = create_related_field('age', True, True)
+    
+    suggestions_Mattress = models.ManyToManyField('Mattress', blank=True)
+    suggestions_Puff = models.ManyToManyField('Puff', blank=True)
 
 class Bed(Product):
     headboard_height = models.IntegerField(default=0)
@@ -57,6 +61,9 @@ class Bed(Product):
     extra_width = models.IntegerField(default=0)
 
     bed_type = create_related_field('bed_type', '', True)
+    
+    suggestions_Mattress = models.ManyToManyField('Mattress', blank=True)
+    suggestions_Puff = models.ManyToManyField('Puff', blank=True)
     
 class Mattress(Product):
     height = models.IntegerField(default=0)
@@ -74,11 +81,16 @@ class Mattress(Product):
     springblock = create_related_field('springblock')
     construction = create_related_field('construction')
     
+    suggestions_Pillow = models.ManyToManyField('Pillow', blank=True)
+    suggestions_MattressPad = models.ManyToManyField('MattressPad', blank=True)
+    
 class Table(Product):
     depth = models.IntegerField(default=0)
     countertop_length = models.IntegerField(default=0)
     weight = models.IntegerField(default=0)
     countertop_weight = models.IntegerField(default=0)
+    
+    suggestions_Accessory = models.ManyToManyField('Accessory', blank=True)
 
 class Pillow(Product):
     height = models.IntegerField(default=0)
@@ -88,6 +100,9 @@ class Pillow(Product):
     age = create_related_field('age', True, True)
     material_filler = create_related_field('material_filler', '', True)
     cover = create_related_field('cover', True, True)
+    
+    suggestions_MattressPad = models.ManyToManyField('MattressPad', blank=True)
+    suggestions_Blanket = models.ManyToManyField('Blanket', blank=True)
 
 class MattressPad(Product):
     height = models.IntegerField(default=0)
@@ -98,6 +113,9 @@ class MattressPad(Product):
     mattresspad_type = create_related_field('mattresspad_type', '', True)
     binding = create_related_field('binding')
     cover = create_related_field('cover', True, True)
+    
+    suggestions_Pillow = models.ManyToManyField('Pillow', blank=True)
+    suggestions_Blanket = models.ManyToManyField('Blanket', blank=True)
 
 class Blanket(Product):
     density = models.IntegerField(default=0)
@@ -107,6 +125,9 @@ class Blanket(Product):
     filling = create_related_field('filling', True, True)
     blanket_color = create_related_field('blanket_color')
     cover = create_related_field('cover', True, True)
+    
+    suggestions_Pillow = models.ManyToManyField('Pillow', blank=True)
+    suggestions_MattressPad = models.ManyToManyField('MattressPad', blank=True)
 
 class Basis(Product):
     distance = models.IntegerField(default=45)
@@ -114,6 +135,9 @@ class Basis(Product):
     legs_height = models.IntegerField(default=0)
 
     recomended = models.ManyToManyField(Choice, related_name='recomendedBasis', verbose_name='Рекомендовано для матрассов')
+    
+    suggestions_Bed = models.ManyToManyField('Bed', blank=True)
+    suggestions_Mattress = models.ManyToManyField('Mattress', blank=True)
 
     def __str__(self):
         return self._meta.verbose_name + ': ' + self.name
@@ -122,3 +146,8 @@ class Puff(Product):
     height = models.IntegerField(default=0)
 
     material = create_related_field('material', '', True)
+    
+    suggestions_FoldingBed = models.ManyToManyField('FoldingBed', blank=True)
+
+class Accessory(Product):
+    suggestions_Accessory = models.ManyToManyField('self', blank=True)

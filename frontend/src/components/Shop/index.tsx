@@ -14,7 +14,7 @@ import Price from '../_reusables/Price';
 import Tab from './Tab';
 
 export default function Shop({links, isMobile}: LinksProps & ResponsiveProps) {
-  const [category, setCategory] = useState('folding_bed')
+  const [category, setCategory] = useState('FoldingBed')
   const [filters, setFilters] = useState<Filters>({order: ['low']});
   const [categoryOpened, openCategory] = useState(false)
   const [filterOpened, openFilter] = useState(false)

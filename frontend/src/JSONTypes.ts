@@ -45,6 +45,7 @@ export interface Product {
 }
 
 export interface DetailedProduct extends Product {
+  suggestions: Product[],
   desc: string,
   images: string[],
   structure: Array<{
