@@ -10,5 +10,5 @@ urlpatterns = [
 	path('', include('frontend.urls'))
 ] + static(STATIC_URL, document_root=STATIC_ROOT) + static(MEDIA_URL, document_root=MEDIA_ROOT) + static(LOCALES_URL, document_root=LOCALES_ROOT)
 
-#handler404 = 'frontend.views.redirect_to_home'
-#handler500 = 'frontend.views.redirect_to_home'
+handler404 = 'frontend.views.redirect_to_home'
+handler500 = 'frontend.views.redirect_to_home'
