@@ -61,8 +61,7 @@ def remove_discount(modeladmin, request, queryset):
 for product_name in ct.get_all_categories():
     form = type(product_name + 'Form', (ProductForm,), {})
     model = getattr(models, product_name)
-    model._meta.verbose_name = f'{ct.get_pr_trans(product_name)}'
-    model._meta.verbose_name_plural = ct.get_pr_trans(product_name)
+    model._meta.verbose_name, model._meta.verbose_name_plural = ct.get_pr_trans(product_name), ct.get_pr_trans(product_name, plural=True)
     setattr(form, 'model', model)
         
     layers = {
