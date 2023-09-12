@@ -20,8 +20,9 @@ products = {
 
 properties = {
   ct.MATTRESS_HEIGHT: ('Максимальная высота матраса (см)', 'Maximum mattress height (cm)'),
-	ct.MAX_PRESSURE: ('Максимальная нагрузка (кг)', 'Maximum load (kg)'),
 	ct.HEIGHT: ('Высота (см)', 'Height (cm)'),
+	ct.MAX_PRESSURE: ('Максимальная нагрузка (кг)', 'Maximum load (kg)'),
+ 	ct.LAMELS: ('Ламели', 'Lamels'),
 	ct.HEADBOARD_HEIGHT: ('Высота изголовья (см)', 'Headboard height (cm)'),
 	ct.EXTRA_LENGTH: ('Габариты кровати - длина (см)', 'Bed dimensions - length (cm)'),
 	ct.EXTRA_WIDTH: ('Габариты кровати - ширина (см)', 'Bed dimensions - width (cm)'),
@@ -41,12 +42,15 @@ properties = {
 
 choices = {
   ct.BASE: ('Основание матраса', 'Mattress Base'),
+	ct.AGE: ('Для возраста', 'Age Category'),
+	ct.WALL: ('Рекомендуемая стена', 'Recommended wall for fastening'),
+	ct.LEGS: ('Ножки', 'Legs'),
+	ct.CUSHION: ('Подушка спинки', 'Back cushion'),
 	ct.MATTRESS_TYPE: ('Тип матраса', 'Mattress Type'),
 	ct.COLLECTION: ('Коллекция', 'Collection'),
 	ct.CONSTRUCTION: ('Конструкция', 'Construction'),
 	ct.RIGIDITY: ('Уровень жесткости стороны', 'Rigidity level of side'),
 	ct.SPRINGBLOCK: ('Пружинный блок', 'Spring block'),
-	ct.AGE: ('Для возраста', 'Age Category'),
 	ct.MATERIAL_FILLER: ('Материал наполнения', 'Material Filler'),
 	ct.COVER: ('Ткань чехла', 'Cover'),
 	ct.MATTRESSPAD_TYPE: ('Тип наматрасника', 'Mattress Pad Type'),
