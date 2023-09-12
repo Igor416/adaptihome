@@ -1,4 +1,5 @@
-from . import models, LangDetectiveSerializer
+from api import models
+from .lang_detective import LangDetectiveSerializer
 
 class ChoiceSerializer(LangDetectiveSerializer):
   class Meta:

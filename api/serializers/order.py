@@ -1,5 +1,7 @@
-from . import models
-from . import LangDetectiveSerializer, SizeSerializer, ListedProductsSerializerFactory
+from api import models
+from .lang_detective import LangDetectiveSerializer
+from .size import SizeSerializer
+from .listed import getListedProductsSerializer
 
 class OrderSerializer(LangDetectiveSerializer):
   sizes = SizeSerializer(many=True)
@@ -41,7 +43,7 @@ class OrderSerializer(LangDetectiveSerializer):
     for ordered_size, serialized_size in zip(models.OrderedSize.objects.filter(order=instance), sizes):
       model = getattr(models, ordered_size.size.category.name)
       product = model.objects.get(name=ordered_size.size.product)
-      data = ListedProductsSerializerFactory(model, self.lang).create(product, lang=self.lang).data
+      data = getListedProductsSerializer(model, self.lang).create(product, lang=self.lang).data
       serialized_size.update({'quantity': ordered_size.quantity})
       data['sizes'] = [serialized_size]
       r['products'].append(data)

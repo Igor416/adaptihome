@@ -1,4 +1,5 @@
-from . import models, catalog as ct, LangDetectiveSerializer
+from api import models
+from .lang_detective import LangDetectiveSerializer
 
 class CategorySerializer(LangDetectiveSerializer):
   class Meta:

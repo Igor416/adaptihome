@@ -1,17 +1,12 @@
-from rest_framework.serializers import Serializer, CharField, IntegerField
-from . import models
+from rest_framework.serializers import Serializer
+from api import models
 
 class SearchResultSerializer(Serializer):
-  link = CharField(max_length=64)
-  text = CharField(max_length=64)
-  
   def  __init__(self, *args, **kwargs):
     self.lang = kwargs.pop('lang', 'en')
     super().__init__(*args, **kwargs)
   
 class CategoryResultSerializer(SearchResultSerializer):
-  count = IntegerField()
-  
   def to_representation(self, obj):
     return {
       'link': f'/shop/{obj.name.lower()}?order=low',
@@ -20,9 +15,6 @@ class CategoryResultSerializer(SearchResultSerializer):
     }
   
 class ProductResultSerializer(SearchResultSerializer):
-  price = IntegerField()
-  discount = IntegerField()
-  
   def to_representation(self, obj):
     return {
       'link': f'/product/{obj.category.name.lower()}/{obj.name}',

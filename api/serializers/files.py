@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from . import models
+from api import models
       
 class ImageSerializer(ModelSerializer):
   def to_representation(self, obj):

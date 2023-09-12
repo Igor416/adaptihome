@@ -1,4 +1,5 @@
-from . import models, ModelSerializer
+from rest_framework.serializers import ModelSerializer
+from api import models
 
 class MattressColectionsPriceSerializer(ModelSerializer):
   class Meta:
