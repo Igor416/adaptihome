@@ -24,3 +24,4 @@ class Size(models.Model):
     class Meta:
         verbose_name = 'size'
         verbose_name_plural = 'sizes'
+        ordering = [models.F('price') * (100 - models.F('discount') / 100)]
