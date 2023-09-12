@@ -10,7 +10,7 @@ interface Href {
 export default function Links({t}: TranslationProps) {
   const links: Href[] = [
     {text: 'home', href: '/'},
-    {text: 'products', href: '/shop/FoldingBed/'},
+    {text: 'products', href: '/shop/folding_bed/'},
     {text: 'about', href: '/about'},
     {text: 'contacts', href: '/contacts'}
   ]

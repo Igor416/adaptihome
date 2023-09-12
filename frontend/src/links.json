@@ -1,12 +1,12 @@
 [
   {
-    "name": "FoldingBed",
+    "name": "folding_bed",
     "image": "https://rabatabil.ro/c/3-footer_default/wall-beds.jpg",
-    "count": 0,
+    "count": 5,
     "filters": []
   },
   {
-    "name": "Bed",
+    "name": "bed",
     "image": "https://rabatabil.ro/c/3-footer_default/wall-beds.jpg",
     "count": 26,
     "filters": [
@@ -18,7 +18,7 @@
     ]
   },
   {
-    "name": "Mattress",
+    "name": "mattress",
     "image": "https://rabatabil.ro/c/16-footer_default/saltele-si-accesorii.jpg",
     "count": 48,
     "filters": [
@@ -40,13 +40,13 @@
     ]
   },
   {
-    "name": "Table",
+    "name": "table",
     "image": "https://rabatabil.ro/c/15-footer_default/chairs-and-tables.jpg",
     "count": 0,
     "filters": []
   },
   {
-    "name": "Accessories",
+    "name": "accessories",
     "image": "https://rabatabil.ro/c/16-footer_default/saltele-si-accesorii.jpg",
     "count": 40,
     "filters": [
@@ -78,7 +78,7 @@
     ]
   },
   {
-    "name": "Puff",
+    "name": "puff",
     "image": "https://rabatabil.ro/c/15-footer_default/chairs-and-tables.jpg",
     "count": 16,
     "filters": []

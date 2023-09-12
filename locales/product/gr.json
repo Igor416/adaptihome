@@ -2,5 +2,24 @@
   "size": "Pick Size",
   "length": "Length",
   "width": "Width",
+  "description": "Description",
+  "information": "Information",
+  "yes": "Yes",
+  "no": "No",
+  "structure": "What is made of?",
+  "dimensions": {
+    "name": "Dimensions",
+    "closed": "Closed Dimensions",
+    "clear": "Clear Dimensions",
+    "table": "Table Dimensions",
+    "mattress_height": "Maximum mattress height",
+    "sidewall": "Sidewall Thickness",
+    "top_panel": "Top Panel Thickness",
+    "bottom_panel": "Bottom Panel Thickness",
+    "table_panel": "Table Panel Thickness",
+    "back": "Back wall thickness",
+    "facades": "Thickness of facades"
+  },
+  "related": "Related Products",
   "shop_more": "Shop Products"
 }
