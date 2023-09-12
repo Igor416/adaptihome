@@ -5,8 +5,7 @@ class ApiConfig(AppConfig):
     verbose_name = 'Work Space'
     
     def ready(self):
-        from . import models
-        from . import catalog as ct
+        from . import models, catalog as ct
 
         for product_name in ct.get_all_categories():
             model = getattr(models, product_name)
