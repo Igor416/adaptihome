@@ -30,7 +30,7 @@ export default function SlideShow({images, isMobile}: SlideShowProps) {
           styles={{
             opacity: 1
           }}
-          className={'carousel-item' + (i === 0 ? ' active' : '')}
+          className={'bg-whitesmoke carousel-item' + (i === 0 ? ' active' : '')}
           src={image}
         >
           

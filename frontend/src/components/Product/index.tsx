@@ -25,7 +25,7 @@ export default function Product({isMobile}: ResponsiveProps) {
   const [pickedSize, pickSize] = useState(0)
   const [openedSection, openSection] = useState(-1)
 
-  const renderOption = (key: string) => {
+  const renderCharacteristic = (key: string) => {
     const val = product?.characteristic[key]
     if (Array.isArray(val)) {
       return val.join(' / ')
@@ -36,6 +36,18 @@ export default function Product({isMobile}: ResponsiveProps) {
     }
   
     return val
+  }
+
+  const renderDimension = (key: string) => {
+    const val = product?.dimensions[key]
+    if (Array.isArray(val)) {
+      if (key === 'table') {
+        return `${val[0]} mm (${t('depth')}) x ${val[1]} mm (${t('width')}), with 2 metal support legs`
+      }
+      return `${val[0]} mm (${t('height')}) x ${val[1]} mm (${t('width')}) x ${val[2]} mm (${t('depth')})`
+    }
+  
+    return val + ' mm'
   }
 
   if (product) {
@@ -67,40 +79,60 @@ export default function Product({isMobile}: ResponsiveProps) {
       <SideText text={t('size') + '.'} />
       <div className='d-flex flex-column flex-sm-row flex-sm-nowrap align-items-center my-5'>
         <SlideShow images={product.images} isMobile={isMobile} />
-        <Sizing sizes={product.sizes} pickedSize={pickedSize} pickSize={pickSize} t={t} isMobile={isMobile} />
+        {!product.article && <Sizing sizes={product.sizes} pickedSize={pickedSize} pickSize={pickSize} t={t} isMobile={isMobile} />}
       </div>
       <SideText text={t('description') + ':'} />
-      <div style={{margin: isMobile ? 0 : '0 20vw'}} className='accordion d-flex flex-column p-4 p-sm-0' id='details'>
-        <span className='h5'>{product.desc}</span>
-        <Section id='information' title={t('information')} opened={openedSection === 1} open={() => openSection(openedSection === 1 ? -1 : 1)}>
-          {Object.keys(product.characteristic).map((key, i) => 
-            <div key={i} className='py-1'>
-              <span>{key}:</span>
-              <span className='ms-1 text-secondary'>{renderOption(key)}</span>
-            </div>
-          )}
-        </Section>
-        {product.structure && <Section id='structure' title={t('structure')} opened={openedSection === 2} open={() => openSection(openedSection === 2 ? -1 : 2)}>
-          {product.structure.map((layer, i) => 
-            <div key={i} className='d-flex py-2 align-items-center'>
-              <div className='col-sm-3 h5'>
-                <span>{layer.name}</span>
+      {
+        product.article
+        ?
+        <div
+          style={{margin: isMobile ? 0 : '0 20vw', whiteSpace: 'pre-line'}}
+          className='p-4 p-sm-0 text-secondary h4'
+          dangerouslySetInnerHTML={{__html: product.article}}
+        >
+          
+        </div>
+        :
+        <div style={{margin: isMobile ? 0 : '0 20vw'}} className='accordion d-flex flex-column p-4 p-sm-0' id='details'>
+          <span className='h5'>{product.desc}</span>
+          <Section id='information' title={t('information')} opened={openedSection === 1} open={() => openSection(openedSection === 1 ? -1 : 1)}>
+            {Object.keys(product.characteristic).map((key, i) => 
+              <div key={i} className='py-1'>
+                <span>{key}:</span>
+                <span className='ms-1 text-secondary'>{renderCharacteristic(key)}</span>
               </div>
-              <div className='col-sm-2 d-flex align-items-center'>
-                <img src={layer.image} />
+            )}
+          </Section>
+          {product.structure && <Section id='structure' title={t('structure')} opened={openedSection === 2} open={() => openSection(openedSection === 2 ? -1 : 2)}>
+            {product.structure.map((layer, i) => 
+              <div key={i} className='d-flex py-2 align-items-center'>
+                <div className='col-sm-3 h5'>
+                  <span>{layer.name}</span>
+                </div>
+                <div className='col-sm-2 d-flex align-items-center'>
+                  <img src={layer.image} />
+                </div>
+                <div className='col-sm-7'>
+                  <span>{layer.desc}</span>
+                </div>
               </div>
-              <div className='col-sm-7'>
-                <span>{layer.desc}</span>
+            )}
+          </Section>}
+          {product.dimensions && <Section id='dimensions' title={t('dimensions.name')} opened={openedSection === 3} open={() => openSection(openedSection === 3 ? -1 : 3)}>
+            {Object.keys(product.dimensions).map((key, i) => 
+              <div key={i} className='py-1'>
+                <span>{t('dimensions.' + key)}:</span>
+                <span className='ms-1 text-secondary'>{renderDimension(key)}</span>
               </div>
-            </div>
-          )}
-        </Section>}
-      </div>
+            )}
+          </Section>}
+        </div>
+      }
       <SideText marginBottom={0} text={t('related') + '.'} />
       <ProductList products={product.suggestions} isMobile={isMobile} />
       <Centralizer>
         <div className='p-5'>
-          <LinkImage to='/shop/FoldingBed/' image='https://flatstudio.md/img/footeradvanced/type_shop.jpg' isMobile={isMobile}>{t('shop_more')}<sup>130</sup></LinkImage>
+          <LinkImage to='/shop/folding_bed/' image='https://flatstudio.md/img/footeradvanced/type_shop.jpg' isMobile={isMobile}>{t('shop_more')}<sup>130</sup></LinkImage>
         </div>
       </Centralizer>
     </div>

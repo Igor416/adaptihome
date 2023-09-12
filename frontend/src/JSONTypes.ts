@@ -47,14 +47,18 @@ export interface Product {
 export interface DetailedProduct extends Product {
   suggestions: Product[],
   desc: string,
-  images: string[],
+  article: string,
+  images: string[]
   structure: Array<{
-      image: string,
-      name: string,
-      desc: string
+    image: string,
+    name: string,
+    desc: string
   }>
   characteristic:  {
     [key: string]: string | string[] | number | boolean
+  },
+  dimensions: {
+    [key: string]: number | number[]
   }
 }
 
