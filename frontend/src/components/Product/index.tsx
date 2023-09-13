@@ -40,21 +40,22 @@ export default function Product({isMobile}: ResponsiveProps) {
 
   const renderDimension = (key: string) => {
     const val = product?.dimensions[key]
+    const unit = product?.category.name === 'Table' ? ' cm' : ' mm'
     if (Array.isArray(val)) {
       if (key === 'table') {
-        return `${val[0]} mm (${t('depth')}) x ${val[1]} mm (${t('width')}), with 2 metal support legs`
+        return `${val[0]}${unit} (${t('depth')}) x ${val[1]}${unit} (${t('width')}), with 2 metal support legs`
       }
-      return `${val[0]} mm (${t('height')}) x ${val[1]} mm (${t('width')}) x ${val[2]} mm (${t('depth')})`
+      return `${val[0]}${unit} (${t('height')}) x ${val[1]}${unit} (${t('width')}) x ${val[2]}${unit} (${t('depth')})`
     }
   
-    return val + ' mm'
+    return val + unit
   }
 
   if (product) {
     return <div className='d-flex mt-sm-5 flex-column'>
       <div className='d-flex flex-column flex-sm-row flex-sm-nowrap align-items-center'>
         <div className='d-flex justify-content-end col-sm-6'>
-          <HoverableImage src={product.shortcut} styles={{opacity: 0.9}} >
+          <HoverableImage src={product.shortcut} className='bg-whitesmoke w-100 d-flex justify-content-end' styles={{opacity: 0.9}} >
             
           </HoverableImage>
         </div>
@@ -79,7 +80,13 @@ export default function Product({isMobile}: ResponsiveProps) {
       <SideText text={t('size') + '.'} />
       <div className='d-flex flex-column flex-sm-row flex-sm-nowrap align-items-center my-5'>
         <SlideShow images={product.images} isMobile={isMobile} />
-        {!product.article && <Sizing sizes={product.sizes} pickedSize={pickedSize} pickSize={pickSize} t={t} isMobile={isMobile} />}
+        {
+          !product.article
+          &&
+          product.category.name != 'Table'
+          &&
+          <Sizing sizes={product.sizes} pickedSize={pickedSize} pickSize={pickSize} t={t} isMobile={isMobile} />
+        }
       </div>
       <SideText text={t('description') + ':'} />
       {
@@ -129,7 +136,7 @@ export default function Product({isMobile}: ResponsiveProps) {
         </div>
       }
       <SideText marginBottom={0} text={t('related') + '.'} />
-      <ProductList products={product.suggestions} isMobile={isMobile} />
+      <ProductList products={product.suggestions} isMobile={isMobile} t={t} />
       <Centralizer>
         <div className='p-5'>
           <LinkImage to='/shop/folding_bed/' image='https://flatstudio.md/img/footeradvanced/type_shop.jpg' isMobile={isMobile}>{t('shop_more')}<sup>130</sup></LinkImage>

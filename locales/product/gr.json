@@ -2,6 +2,8 @@
   "size": "Pick Size",
   "length": "Length",
   "width": "Width",
+  "height": "Height",
+  "depth": "Depth",
   "description": "Description",
   "information": "Information",
   "yes": "Yes",
@@ -18,8 +20,15 @@
     "bottom_panel": "Bottom Panel Thickness",
     "table_panel": "Table Panel Thickness",
     "back": "Back wall thickness",
-    "facades": "Thickness of facades"
+    "facades": "Thickness of facades",
+    "worktop_1": "Dimensions with one worktop",
+    "worktop_2": "Dimensions with two worktops",
+    "worktop_3": "Dimensions with three worktops",
+    "worktop_4": "Dimensions with four worktops",
+    "worktop_5": "Dimensions with five worktops",
+    "thickness": "Thickness of countertops"
   },
   "related": "Related Products",
-  "shop_more": "Shop Products"
+  "shop_more": "Shop Products",
+  "from": "From"
 }

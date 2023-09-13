@@ -42,7 +42,7 @@ class ProductForm(forms.ModelForm):
 					field.label = f'Suggestions ({model.get_name()}):'
 					field.queryset = model.objects.all()
 
-				elif not name.endswith('_dimensions'):
+				elif not name.endswith('dimensions'):
 					field.label = ct.get_prop_trans(name)
 					field.queryset = models.Choice.objects.filter(name=name)
 

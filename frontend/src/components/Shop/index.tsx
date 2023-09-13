@@ -99,6 +99,6 @@ export default function Shop({links, isMobile}: LinksProps & ResponsiveProps) {
         </div>
       )}
     </Submenu>
-    <ProductList products={products} isMobile={isMobile} />
+    <ProductList products={products} isMobile={isMobile} t={t} />
   </div>
 }
