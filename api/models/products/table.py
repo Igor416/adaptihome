@@ -9,8 +9,8 @@ class Table(Product):
   weight = models.IntegerField(default=0)
   countertop_weight = models.IntegerField(default=0)
   
-  article_en = models.TextField('Article (gr)', blank=True)
-  article_gr = models.TextField('Article (en)', blank=True)
+  article_en = models.TextField('Article (en)', blank=True)
+  article_gr = models.TextField('Article (gr)', blank=True)
   
   dimensions = models.ForeignKey(Size, null=True, on_delete=models.SET_NULL, related_name='dimensions', verbose_name='Dimensions')
   

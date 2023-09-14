@@ -9,8 +9,8 @@ class FoldingBed(Product):
   max_pressure = models.IntegerField(default=0)
   lamels = models.IntegerField(default=0)
   
-  article_en = models.TextField('Article (gr)', blank=True)
-  article_gr = models.TextField('Article (en)', blank=True)
+  article_en = models.TextField('Article (en)', blank=True)
+  article_gr = models.TextField('Article (gr)', blank=True)
   
   closed_dimensions = models.ForeignKey(Size, null=True, on_delete=models.SET_NULL, related_name='closed_dimensions', verbose_name='Closed Dimensions')
   table_dimensions = models.ForeignKey(Size, null=True, on_delete=models.SET_NULL, related_name='table_dimensions', verbose_name='Table Dimensions', blank=True)

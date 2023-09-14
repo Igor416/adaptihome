@@ -48,12 +48,12 @@
   {
     "name": "accessories",
     "image": "https://rabatabil.ro/c/16-footer_default/saltele-si-accesorii.jpg",
-    "count": 40,
+    "count": 55,
     "filters": [
       {
         "key": "category",
         "multiple": true,
-        "values": ["Pillow", "MattressPad", "Blanket", "Basis"]
+        "values": ["Pillow", "MattressPad", "Blanket", "Basis", "Accessory"]
       },
       {
         "key": "age",
