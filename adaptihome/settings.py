@@ -1,13 +1,13 @@
 import environ
 from pathlib import Path
 
-env = environ.Env()
+env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env('SECRET_KEY')
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['adaptihome.pythonanywhere.com', 'www.adaptihome.cy', '127.0.0.1']
 
